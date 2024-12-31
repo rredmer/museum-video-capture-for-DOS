@@ -1,0 +1,6 @@
+ECHO OFF
+CLS
+ECHO Creating JVC HRCAP API Library...
+CL /c /AL *.c
+DEL JVCLIB.LIB
+LIB @LIBLIST.SRC

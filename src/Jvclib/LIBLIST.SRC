@@ -1,0 +1,17 @@
+JVCLIB
+Y
++ATASM.OBJ&
++CH1.OBJ&
++stdfox.obj&
++jvc_lib.obj&
++calib.obj&
++config.obj&
++grab.obj&
++live.obj&
++loadcoff.obj&
++term.obj&
++tgafile.obj&
++tty.obj&
++util.obj&
++video.obj
+JVCLIB

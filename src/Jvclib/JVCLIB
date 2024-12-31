@@ -1,0 +1,153 @@
+_Abort............util              _Ack2GSP..........jvc_lib
+_addch............ATASM             _addstr...........ATASM
+_box..............video             _CancelExec.......jvc_lib
+_capRegs..........jvc_lib           _CfgCapMode.......config
+_CfgDspMode.......config            _CheckGSPMsg......jvc_lib
+_CheckHR..........jvc_lib           _chkcrt...........ATASM
+_CinitCopy........loadcoff          _CloseMouse.......ATASM
+_clrbox...........video             _CommBaud.........jvc_lib
+_CommPort.........jvc_lib           _Complete.........util
+_CopyPat..........ATASM             _curoff...........ATASM
+_curon............ATASM             _dbox.............video
+_Delay............jvc_lib           _DoBlackBalance...calib
+_DoGrab...........grab              _DoTTY............tty
+_DoWhiteBalance...calib             _DspCapInfo.......jvc_lib
+_endwin...........ATASM             _ErrorMessage.....util
+_ExitLive.........live              _FdLoadGSPProg....loadcoff
+_GetCapRect.......live              _GetCommAddr......ATASM
+_GetConfig........config            _getcur...........ATASM
+_GetEvent.........jvc_lib           _GetGSPCtl........ATASM
+_GetGSPMsg........ATASM             _getticks.........ATASM
+_GSPExec..........loadcoff          _GSPHostPortInBuf..ATASM
+_GSPHostPortOutBuf..ATASM           _GSPInit..........loadcoff
+_HRError..........jvc_lib           _HRSetup..........jvc_lib
+_InitHR...........jvc_lib           _initscr..........ATASM
+_Init_Comm........term              _InLiveMode.......live
+_inpw.............ATASM             _i_m..............CH1
+_JvcBBCalib.......jvc_lib           _JvcCropMove......live
+_JvcCropSize......live              _JvcGrab..........jvc_lib
+_JvcInit..........jvc_lib           _JvcInitEnv.......jvc_lib
+_JvcIrisCalib.....jvc_lib           _JvcLive..........live
+_JvcSaveImage.....jvc_lib           _JvcSetResolution..jvc_lib
+_JvcWBCalib.......jvc_lib           _keyflush.........ATASM
+_keyhit...........ATASM             _keyread..........ATASM
+_keywrite.........ATASM             _LiveVista........live
+_LoadCoff.........loadcoff          _LoadTgaFile......tgafile
+_move.............ATASM             _movein...........video
+_movemem..........ATASM             _Msg2GSP..........jvc_lib
+_Msg2HR...........jvc_lib           _MsgFromGSP.......jvc_lib
+_MsgFromHR........jvc_lib           _outpw............ATASM
+_rdmdm............CH1               _readch...........ATASM
+_ReadGSPBuffer....ATASM             _ReadGSPData......ATASM
+_ReadGSPLong......ATASM             _ReadGSPWord......ATASM
+_Read_Modem.......term              _RelocateItem.....loadcoff
+_RelocateSection..loadcoff          _repch............ATASM
+_rts_m............CH1               _RV16.............ATASM
+_RV16to8..........ATASM             _RV24.............ATASM
+_RV24to8..........ATASM             _RV32.............ATASM
+_RV32to8..........ATASM             _RVNoop...........ATASM
+_SaveTgaFile......tgafile           _SelectFocusArea..calib
+_setatr...........ATASM             _SetCapLut........jvc_lib
+_SetCapLutLinear..jvc_lib           _SetGSPAddr.......ATASM
+_SetGSPCtl........ATASM             _SetGSPMsg........ATASM
+_SetIrisLut.......jvc_lib           _SetLinearLut.....jvc_lib
+_SetLiveLut.......jvc_lib           _SetRect..........jvc_lib
+_SetShutterSpeed..jvc_lib           _Set_Baud.........term
+_set_mdm..........CH1               _Set_Parity.......term
+_shftrls..........ATASM             _shftstat.........ATASM
+_shutterSpeed.....jvc_lib           _Term_Comm........term
+_u_m..............CH1               _VistaEnv.........jvc_lib
+_WaitAckGSP.......grab              _WaitAckHR........grab
+_WaitWindow.......util              _Warning..........util
+_WriteGSPBuffer...ATASM             _WriteGSPData.....ATASM
+_WriteGSPLong.....ATASM             _WriteGSPWord.....ATASM
+_Write_Modem......term              _wrtmdm...........CH1
+_WV16to16.........ATASM             _WV16to24.........ATASM
+_WV16to32.........ATASM             _WV24to16.........ATASM
+_WV24to24.........ATASM             _WV24to32.........ATASM
+_WV32to16.........ATASM             _WV32to24.........ATASM
+_WV32to32.........ATASM             _WV8to16..........ATASM
+_WV8to24..........ATASM             _WV8to32..........ATASM
+_WVNoop...........ATASM             _w_tmr............CH1
+_xclose...........stdfox            _xfree............stdfox
+_xgets............stdfox            _xlseek...........stdfox
+_xmalloc..........stdfox            _xopen............stdfox
+_xread............stdfox            _xwrite...........stdfox
+__btnrls..........ATASM             __button..........ATASM
+__GetMickey.......ATASM             __InitMouse.......ATASM
+__ReadVstaMem.....ATASM             __WriteVstaMem....ATASM
+__xffree..........stdfox            __xfmalloc........stdfox
+
+
+ATASM             Offset: 00000010H  Code and data size: 76eH
+  _addch            _addstr           _chkcrt           _CloseMouse
+  _CopyPat          _curoff           _curon            _endwin
+  _GetCommAddr      _getcur           _GetGSPCtl        _GetGSPMsg
+  _getticks         _GSPHostPortInBuf                   _GSPHostPortOutBuf
+  _initscr          _inpw             _keyflush         _keyhit
+  _keyread          _keywrite         _move             _movemem
+  _outpw            _readch           _ReadGSPBuffer    _ReadGSPData
+  _ReadGSPLong      _ReadGSPWord      _repch            _RV16
+  _RV16to8          _RV24             _RV24to8          _RV32
+  _RV32to8          _RVNoop           _setatr           _SetGSPAddr
+  _SetGSPCtl        _SetGSPMsg        _shftrls          _shftstat
+  _WriteGSPBuffer   _WriteGSPData     _WriteGSPLong     _WriteGSPWord
+  _WV16to16         _WV16to24         _WV16to32         _WV24to16
+  _WV24to24         _WV24to32         _WV32to16         _WV32to24
+  _WV32to32         _WV8to16          _WV8to24          _WV8to32
+  _WVNoop           __btnrls          __button          __GetMickey
+  __InitMouse       __ReadVstaMem     __WriteVstaMem  
+
+CH1               Offset: 00000f20H  Code and data size: 3e5H
+  _i_m              _rdmdm            _rts_m            _set_mdm
+  _u_m              _wrtmdm           _w_tmr          
+
+stdfox            Offset: 00001340H  Code and data size: 218H
+  _xclose           _xfree            _xgets            _xlseek
+  _xmalloc          _xopen            _xread            _xwrite
+  __xffree          __xfmalloc      
+
+jvc_lib           Offset: 00001800H  Code and data size: 250fH
+  _Ack2GSP          _CancelExec       _capRegs          _CheckGSPMsg
+  _CheckHR          _CommBaud         _CommPort         _Delay
+  _DspCapInfo       _GetEvent         _HRError          _HRSetup
+  _InitHR           _JvcBBCalib       _JvcGrab          _JvcInit
+  _JvcInitEnv       _JvcIrisCalib     _JvcSaveImage     _JvcSetResolution
+  _JvcWBCalib       _Msg2GSP          _Msg2HR           _MsgFromGSP
+  _MsgFromHR        _SetCapLut        _SetCapLutLinear  _SetIrisLut
+  _SetLinearLut     _SetLiveLut       _SetRect          _SetShutterSpeed
+  _shutterSpeed     _VistaEnv       
+
+calib             Offset: 000041f0H  Code and data size: f11H
+  _DoBlackBalance   _DoWhiteBalance   _SelectFocusArea
+
+config            Offset: 00005a40H  Code and data size: d05H
+  _CfgCapMode       _CfgDspMode       _GetConfig      
+
+grab              Offset: 000071a0H  Code and data size: 2f4H
+  _DoGrab           _WaitAckGSP       _WaitAckHR      
+
+live              Offset: 000077c0H  Code and data size: 1bdH
+  _ExitLive         _GetCapRect       _InLiveMode       _JvcCropMove
+  _JvcCropSize      _JvcLive          _LiveVista      
+
+loadcoff          Offset: 00007c80H  Code and data size: bdcH
+  _CinitCopy        _FdLoadGSPProg    _GSPExec          _GSPInit
+  _LoadCoff         _RelocateItem     _RelocateSection
+
+term              Offset: 00008ea0H  Code and data size: 175H
+  _Init_Comm        _Read_Modem       _Set_Baud         _Set_Parity
+  _Term_Comm        _Write_Modem    
+
+tgafile           Offset: 000092a0H  Code and data size: 1d21H
+  _LoadTgaFile      _SaveTgaFile    
+
+tty               Offset: 0000bbb0H  Code and data size: 3dbH
+  _DoTTY          
+
+util              Offset: 0000c3d0H  Code and data size: 187H
+  _Abort            _Complete         _ErrorMessage     _WaitWindow
+  _Warning        
+
+video             Offset: 0000c7a0H  Code and data size: 2a2H
+  _box              _clrbox           _dbox             _movein

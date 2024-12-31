@@ -1,0 +1,617 @@
+                        'HRCAP V.1.03' APPLICATION GUIDE
+
+
+
+                       CONTENTS                              PAGE
+
+       1. System Requirement                             ...  1
+
+
+       2. Installation of HRCAP                          ...  1
+
+          2.1 Software Installation                      ...  1
+
+          2.2 Hardware Installation                      ...  2
+
+
+       3. Getting Started HRCAP                          ...  3
+
+          3.1 HRCAP Functions                            ...  4
+
+          3.2 Detail of HRCAP.CFG                        ...  6
+
+          3.3 HRCAP Options                              ...  8
+
+
+       4. TK-F7300U Calibrations                         ...  9
+
+       APPENDIX
+        A.  RESOLUTION OF CAPTURE IMAGE
+        B.  LUT FILE FORMAT
+        C.  ENV FILE FORMAT
+
+1. System Requirement
+
+  o PC/AT or compatible computer
+  o MS-DOS ver 3.1 or later
+  o Minimum requirement : ATVista 4MB
+           Available to use VMX memory additionally.
+  o RGB Variable-Scan display monitor for ATVista
+  o TK-F7300U camera head and cables
+  o AC adapter
+
+
+2. Installation of HRCAP
+
+2.1 Software Installation
+
+On mass production stage, one floppy diskette will be provided in the package
+of TK-F7300U.
+This diskette contains;
+
+o HRCAP.EXE   ...  PC/AT HRCAP program
+o HRCAP.OUT   ...  AtVista GSP program
+o HRCAP.CFG   ...  HRCAP Starting configuration file (text file)
+o HRCAP.ENV   ...  HRCAP initial data
+o HRCAP.LUT   ...  Capture LUT
+o DISPLAY.LUT ...  Display LUT
+o LIVE.LUT    ...  Live LUT
+o HRCAP.COL   ...  Color matrix data (factory setting)
+o LINEAR.LUT  ...  Linear LUT
+o HRCAP.DOC   ...  This document
+
+Follow next instructions to install the HRCAP onto the the hard disk;
+  1) Make backups of the product diskette.
+  2) Create a directory to contain of HRCAP if necessary.
+
+       MD C:\HRCAP
+
+  3) Copy the HRCAP package into the hard disk. Put the provided diskette in 
+     drive A.
+
+       COPY A:\*.* C:\HRCAP
+
+When HRCAP started, HRCAP reads all the necessary files from the directory that 
+HRCAP is belong to. 
+
+       SET PATH=C:\HRCAP
+
+After this operation, you can execute the HRCAP program wherever you are in.
+
+2.2 Hardware Installation
+
+o Connecting TK-F7300U to the PC/AT
+
+    The connecting TK-F7300U to the PC is shown below.
+
+                  PC/AT
+         +-------------------+
+         |  +-------------+  |
+         |  |             |  |
+         |  |             |  |
+         |  |             |  |
+         |  |             |  |
+         |  +-------------+  |
+         +-------------------+                       
+     +---------------------------+                      TK-F7300U  
+     |                           |                    +-----------+
+     |                           |        RGB         |           |
+     |          ATVista Video IN |--------------------|RGB.SYNC   +--+
+     |                    COM1   |--------------------|RS-232C    |  |
+     |                   (COM2)  |    SERIAL      +---|POWER      +--+
+     |                           |                |   +-----------+
+     +---------------------------+                |
+                                        +-------+ |
+                                        |       |-+
+                                        +-------+
+                                        AC ADAPTER
+
+  !!! CAUTION !!!
+  Loosen the lockpin by a screwdriver (counter-clockwise) located on top of
+  the body. This lockpin fixes the mechanism of the camera to avoid shocks
+  during transportation. If you start camera operation without loosening the
+  lockpin, it might cause a damage.
+
+                      Fig 1  Connecting TK-F7300U to PC/AT
+
+o Select the I/O base address on ATVista board
+  The ATVista board can select the base I/O address for the GSP Host Interface 
+  Registers. For this selectable I/O base address, HRCAP reads the I/O base 
+  address from configuration file "HRCAP.CFG". The 'IOBASE' variable in 
+  HRCAP.CFG defines the I/O base. Check the I/O base in the ATVista and 
+  HRCAP.CFG to have same I/O base address, and edit the HRCAP.CFG file with any   text editor program, if necessary.
+
+o Select the serial port number
+  Connect the serial line of TK-F7300U to the COM1 or COM2 port in PC/AT 
+  (default COM1). HRCAP reads the serial port from configuration file 
+  "HRCAP.CFG". The 'commPort' variable in HRCAP.CFG defines the serial port 
+  number. Edit this file with any text editor program, if necessary.
+
+3. Getting Started HRCAP
+
+ 1) Power on both PC/AT and the AC adaptor of HRCAP.
+
+    NOTE:  As ATVista board and TK-F7300U have thermal drift of the resampling 
+           phase, wait about 20 minutes until the system becomes stable.
+
+ 2) Type HRCAP<Enter>
+
+    When it started, HRCAP reads the configuration file named "HRCAP.CFG". The 
+    configuration file specifies the capture resolution, the display resolution,    gamma switch and so on.
+    If you are going to change the HRCAP specification, edit the HRCAP.CFG for 
+    your purpose. See '3.2 Detail of HRCAP.CFG'.
+
+    You can also change the HRCAP specification by the program starting 
+    options. The program options are prior to the specifications of the 
+    configuration file. In this case, you do not need to edit the HRCAP.CFG 
+    file. 
+    For more detail, see '3.3 HRCAP Options'.
+
+
+When HRCAP started, the following screen appears;
+ 
+     HRCAP Version 1.03 01-Jul-1992
+     Copyright (C) JVC TV.Research Laboratory 1991,1992
+   ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+   ºÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿º
+   º³ [F1]...Live          ³³                                               ³º
+   º³ [F2]...FOcus         ³³                                               ³º
+   º³ [F3]...Iris          ³³                                               ³º
+   º³ [F4]...Grab          ³³                                               ³º
+   º³ [F5]...Display       ³³                                               ³º
+   º³ [F6]...Files         ³³                                               ³º
+   º³ [F7]...Wipe up       ³³                                               ³º
+   º³ [F8]...Exit to DOS   ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙº
+   º³                      ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   ºÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙº
+   º  Cap(x2):1472x1152  Dsp:736x576   32b/p  Gain:0dB  Gen:master  Gma:OFF  º
+   ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+                            Fig 2  HRCAP Main Screen
+
+In this main screen, main command appears in the left box and the current
+capture status appears in the bottom line.
+
+o Cap(x1): 1472x1000
+    This means current capture image resolution; 1472 in horizontal and 1000 in
+    vertical resolution.
+
+o Dsp: 736x576
+    This means current display resolution mode. Standard interlaced PAL or
+    non-interlaced PAL mode.
+
+o 32b/p
+    This means current pixel bit size on ATVista.
+
+o Gain: 0dB
+    Current RGB gain.
+
+o Gen:master
+    Sync genlock in the AtVista side.
+
+o Gma: OFF
+    This means the gamma switch of TK-F7300U is off.
+
+
+HRCAP changes these capture status by the specification in HRCAP.CFG file or thestarting options automatically.
+
+3.1 HRCAP Functions
+
+1) [F1] ... Live : 
+  Get the 'Live Image' from the camera. On this mode, the view finder appears 
+  with a live image. HRCAP digitizes the image in this rectangle area. You can 
+  move the view finder by the mouse and change the size of rectangle by 
+  'dragging mouse' that means moving the mouse with pressing the left button, 
+  or cursor keys with pressing shift key.
+
+2) [F2] ... FOcus :
+    Focusing the live image with left or right cursor key.
+
+3) [F3] ... Iris :
+  Use adjusting the lighting conditions. The RGB video signal that is more than   95% level is changed 100% R signal.
+
+4) [F4] ... Grab :
+  Grab the image by current capture mode. After adjusting the focusing, hit
+  this key for the capturing the image. You have to wait a few seconds 
+  depending on the capture modes.
+
+5) [F5] ... Display :
+  Display captured image. Large image is not possible to show the full image 
+  in one time on the display screen. On this function, the cross cursor appears
+  in center of screen. You can pan the captured image by moving cursor with
+  mouse or cursor key, and can zoom in/out by [F9] and [F10] key.
+
+6) [F6] ... Files :
+  This function have sub-menus. The sub-menu appears on upper-right box.
+
+  1. Save image
+    Save captured image into diskette or hard disk with 'TGA' file format.
+    The maximum captured image (2208x1728 24b/p None compressing) occupies
+    around 11.5MB file space. Check the free space of your diskette of hard 
+    disk before saving the image.
+
+  2. Load TGA file
+    Load TGA file and display the image.
+
+  3. Enhance image
+    This function compensate the captured image with the horizontal/vertical
+    frequency characteristic.
+
+  4. RGB Matrix
+    This function compensate the RGB characterstics.
+
+  5. Gray-scale
+    Change the captured image to the 256 gray scale image.
+
+7) [F7] ... Wipe Up :
+  This function is for clearing out the captured image of the display screen.
+
+8) [F8] ... Exit to Dos
+  Ends HRCAP and turn to MS-DOS.
+
+3.2 Detail of HRCAP.CFG
+
+When HRCAP started, HRCAP reads the configuration file and recognizes own 
+specifications by reserved variables. The following list is the file of completeHRCAP.CFG.
+
+###############################################################################
+#	HRCAP Configuration File : HRCAP.CFG
+#		01-Jul-1992 JVC TV Research Lab.
+###############################################################################
+
+# LUT table data file name (default linear lut)
+# note: These files must be in the same directory of HRCAP.EXE
+#
+CaptureLut=HRCAP.LUT
+DisplayLut=DISPLAY.LUT
+
+# Environment file (default: HRCAP.ENV)
+# note: This file must be in the same directory of HRCAP.EXE
+EnvFile=HRCAP.ENV
+
+# Capture mode
+#    X1, X2 or X3
+#
+#   The maximum resolutions are as follows:
+# X1:
+#   736 x  576, 16 b/p (4MB Vista)
+#   736 x  576, 32 b/p (4MB Vista)
+# X2:
+#   1024 x  768, 16 b/p (4MB Vista)
+#   1024 x  768, 32 b/p (4MB Vista)
+#   1472 x 1000, 16 b/p (4MB Vista)
+#   1472 x 1152, 16 b/p (2MB VMX)
+#   1472 x 1152, 32 b/p (10MB VMX)
+# X3:
+#   2208 x 1728, 16 b/p (10MB VMX)
+#   2208 x 1728, 32 b/p (10MB VMX)
+# X6:
+#   2850 x 2112, 16 b/p (10MB VMX)
+#   2328 x 1718, 32 b/p (10MB VMX)
+#
+CaptureMode=X2
+
+
+# Pixel size
+#   16 or 32
+#
+PixelSize=32
+
+
+# Display mode
+#   StdPal    ... Interlaced Standard PAL resolution : 739 x 576
+#   NonIntPal ... NonInterlaced Standard PAL resolution : 739 x 576
+#   Hires     ... Interlaced High resolution : 1024 x 768
+DisplayMode=NonIntPal
+
+
+# Serial communication port : COM1 or COM2
+#
+CommPort=COM1
+
+
+# Gamma switch toggle : ON or OFF
+#
+Gamma=OFF
+Knee=OFF
+
+
+# Input video sync genlock mode to Vista board :
+#	Maser or Slave (for Vista side)
+# AtVista sync mode 
+#
+Genlock=Master
+
+
+# RGB Gain
+#	-6,0,+6 [dB]
+#
+Gain=0
+
+# Shutter Speed
+# 0: Normal (default)
+# 60 : 1/60 second
+# 100 : 1/100 second
+# 120 : 1/120 second
+# 125 : 1/125 second
+# 250 : 1/250 second
+# 500 : 1/500 second
+# 1000 : 1/1000 second
+# 2000 : 1/2000 second
+# 4000 : 1/4000 second
+# 10000 : 1/10000 second
+ShutterSpeed=0
+
+
+# AtVista Base I/O Address
+#
+IOBASE=0x228
+
+# The register variables of AtVista in capturing image.
+HESYNC=207
+HEBLNK=68
+HSBLNK=438
+HTOTAL=453
+VESYNC=2
+VEBLNK=17
+VSBLNK=310
+VTOTAL=312
+
+
+### end of HRCAP.CFG ###
+
+
+The sentences of starting with '#' character are comment lines. HRCAP ignores 
+these lines. The reserved variables ends '=' character and means following 
+number or string.
+The reserved variables means;
+
+o CaptureLUT
+   Defines the LUT data on capturing image.
+
+o DisplayLUT
+   Defines the LUT data on displaying image.
+
+o EnvFile
+   Defines the environment file that includes the values of calibrations;
+   horizontal phase, RGB setups, RGB gain.
+
+o CaptureMode 
+   Defines the TK-F7300U capture mode.
+
+o PixelSize
+   Defines capturing and displaying image pixel size.
+
+o DisplayMode
+   Defines the display mode.
+   
+o CommPort
+   Defines the serial port number connecting to TK-F7300U.
+
+o Gamma
+   Defines the gamma switch of TK-F7300U. (at live/grab mode)
+
+o Knee
+   Defines the knee switch of TK-F7300U. (at live/grab mode) This variable
+   ignore if the Gamma is OFF. (= linear)
+
+o GenLock
+   Defines the video sync genlocking on ATVista.
+
+o Gain
+   Defines the RGB gain on capturing image.
+
+o ShutterSpeed
+   Defines the electric shutter speed of TK-F7300U.
+      
+o IOBASE
+   Defines the ATVista Base I/O address. The default I/O base address in
+shipped ATVista board is 0x228. The '0x' prefix means hexia-decimal values.
+
+Following reserved variables means of the GSP register values of ATVista at 
+capturing stage. These values are standard PAL mode that described on TRUEVISIONATVista technical manual.
+
+  HESYNC
+  HEBLNK
+  HSBLNK
+  HTOTAL
+  VESYNC
+  VEBLNK
+  VSBLNK
+  VTOTAL
+
+
+3.3 HRCAP Options
+
+When HRCAP is started, HRCAP recognizes the command options.
+You can also change the HRCAP specification by the program starting 
+options. The command options are prior to the specifications of the 
+configuration file in HRCAP.CFG. In this case you need not to edit the HRCAP.CFGfile. 
+The command options are printed by following command;
+
+   HRCAP ?   or   HRCAP -help
+
+Then following messages are printed;
+
+HRCAP Version 1.03 01-Jul-1992
+Copyright (C) JVC TV.Research Laboratory 1991,1992
+
+Usage: hrcap [options] :
+   -le <FileName>       ... HRCAP environment file
+   -lc <FileName>       ... Capture lut file
+   -ld <FileName>       ... Display lut file
+   -g <On/Off>          ... Camera gamma on/off
+   -k <On/Off>          ... Knee on/off
+   -c1 or -c2           ... HR-Camera serial port [default:COM1(c1)]
+   -s <0,60,100,120,125,250,500,1000,2000,4000,10000> ... Shutter speed
+   -slave, -master      ... AtVista Genlock mode [default:Master]
+   -d <StdPal, NonIntPal or Hires> ... Display mode
+   -x1,-x2,-x3 -x6 [-h,-v]  ... Capture resolution
+       ex.  hrcap -x3 -h1920 -v1080
+   -p16 or -p32         ... Pixel size
+   -6dB,0dB,+6dB        ... RGB Sensitivity
+   -calib               ... Calibration mode on
+   -help or ?           ... this help
+
+These options have same effects of the specifications in HRCAP.CFG.
+
+4. TK-F7300U Calibrations
+
+After the installation of software and hardware, grab one image by using
+HRCAP program and check the captured image. If the following symptom happens 
+on in the captued image, you have to make an action of 'calibration'.
+	
+	o The capture image has ghost line or shaded edges.
+              You have to make "Phase calibration".
+	
+	o The capture image has unbalanced white.
+              You have to make "White balance calibration.
+
+
+For calibration of TK-F7300U, type the following command;
+
+     HRCAP -calib
+
+The calibration function will be appended to the main menu as;
+
+     [F9]...Calibration
+
+Then Press 'F9' or 'C'. The sub menus of calibration appears.
+
+     HRCAP Version 1.03 01-Jul-1992
+     Copyright (C) JVC TV.Research Laboratory 1991,1992
+   ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+   ºÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿º
+   º³ [F1]...Live          ³³ 1) Horizontal Phase                           ³º
+   º³ [F2]...FOcus         ³³ 2) Black Balance                              ³º
+   º³ [F3]...Iris          ³³ 3) White Balance                              ³º
+   º³ [F4]...Grab          ³³ 4) Save                                       ³º
+   º³ [F5]...Display       ³³                                               ³º
+   º³ [F6]...Files         ³³                                               ³º
+   º³ [F7]...Wipe up       ³³                                               ³º
+   º³ [F8]...Exit to DOS   ³ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙº
+   º³ [F9]...Calibration   ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   º³                      ³³                                               ³º
+   ºÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙº
+   º  Cap(x1):736x576    Dsp:736x576   32b/p  Gain:0dB  Gen:master  Gma:OFF  º
+   ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+
+
+                         Fig 3  HRCAP Calibration menu
+1) Horizontal Phase
+  Adjust the horizontal phase of the RGB video signal from TK-F7300U. TK-F7300U
+  outputs the phase pilot video signal. HRCAP captures this pilot video signal
+  and adjust the horizontal phase automatically.
+
+2) Black Balance
+  Adjust the black balance. Before the operation, close the lens with a 
+  lens cap.
+
+3) White Balance
+  Adjust the white balance. Before the operation, place a white object and 
+  adjust the focus well.
+
+4) Save
+  Save the calibration data into a disk file; HRCAP.ENV.
+  When HRCAP starts for the next time, HRCAP read this HRCAP.ENV file and setup
+  the camera with the new calibration values.
+
+                                    APPENDIX
+
+A. Resolution of capture image
+
+    ------------------------------------------------------------------
+        MEM     |   4MB  |   6MB  |   8MB  |  10MB  |  12MB  |  14MB  
+       (VMX)    |   (0)  |   (2)  |   (4)  |   (6)  |   (8)  |  (10)  
+    ------------|--------|--------|--------|--------|--------|--------
+       16b/p    |   736  |        |        |        |        |        
+         x1     |    x   |  <---  |  <---  |  <---  |  <---  |  <---  
+                |   576  |        |        |        |        |        
+    ------------|--------|--------|--------|--------|--------|--------
+       32b/p    |   736  |        |        |        |        |        
+         x1     |    x   |  <---  |  <---  |  <---  |  <---  |  <---  
+                |   576  |        |        |        |        |        
+    ------------|--------|--------|--------|--------|--------|--------
+       16b/p    |  1472  |  1472  |        |        |        |        
+         x2     |    x   |    x   |  <---  |  <---  |  <---  |  <---  
+                |  1000  |  1152  |        |        |        |        
+    ------------|--------|--------|--------|--------|--------|--------
+       16b/p    |        |  1592  |  1984  |  2208  |        |        
+         x3     |  ----  |    x   |    x   |    x   |  <---  |  <---  
+                |        |  1174  |  1466  |  1728  |        |        
+    ------------|--------|--------|--------|--------|--------|--------
+       32b/p    |  1024  |  1300  |  1472  |        |        |        
+         x2     |    x   |    x   |    x   |  <---  |  <---  |  <---  
+                |   768  |   954  |  1152  |        |        |        
+    ------------|--------|--------|--------|--------|--------|--------
+       32b/p    |        |  1300  |  1620  |  1886  |  2118  |  2208  
+         x3     |  ----  |    x   |    x   |    x   |    x   |    x   
+                |        |   954  |  1192  |  1392  |  1556  |  1728  
+    ------------------------------------------------------------------
+ 
+ B. LUT File format
+
+  HRCAP.LUT and DISPLAY.LUT are binary files of 1024 bytes.
+  Construction of the file format is as follows :
+  
+----------------------------------------------------------------------
+RGB entry |    0    |    1    |    2    |          .....   |  1023
+----------+---------+---------+---------+------------------+----------
+file data | R G B a | R G B a |  .....  |          .....   | R G B a 
+----------------------------------------------------------------------
+
+C. ENV file format
+
+  The HRCAP.ENV entried by saving calibration menu is binary file of 78 bytes.
+  Construction of the file format is as follows :
+  
+file offset (byte)
+
+  ----------------------------------------------------------------
+    0     genlock         0:Vista Master,  1:Vista Slave
+    1     sampling        0:908fH,  1:942fH
+    2     gamma           0:Camera gamma off,  1:Camera gamma on
+    3     knee            0:Knee off,  1:Knee on
+    4     phase           -16 to +16
+    5     table index     specifies the RGB setup and gain
+
+  ----------------------------------------------------------------
+          RGB Setup
+  ----------------------------------------------------------------
+   6- 8   R G B                        -6dB
+   9-11                                 0dB     Gamma OFF
+  12-14                                +6dB
+  15-17    not used       
+  ----------------------------------------------------------------
+  18-20   R G B                        -6dB
+  21-23                                 0dB     Gamma ON
+  24-26                                +6dB
+  27-29    not used       
+  ----------------------------------------------------------------
+          RGB Gain
+  ----------------------------------------------------------------
+  30-35   R-H,R-L, G-H,G-L, B-H,B-L    -6dB
+  36-41                                 0dB     Gamma OFF
+  42-47                                +6dB
+  48-53    not used       
+  ----------------------------------------------------------------
+  54-59   R-H,R-L, G-H,G-L, B-H,B-L    -6dB
+  60-65                                 0dB     Gamma ON
+  66-71                                +6dB
+  72-77    not used       
+  ----------------------------------------------------------------
